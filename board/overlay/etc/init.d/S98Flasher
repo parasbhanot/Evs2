@@ -1,0 +1,33 @@
+#!/bin/sh
+### BEGIN INIT INFO
+### run pppd and gpio at begining 
+### END INIT INFO
+
+start()
+{
+
+echo "Flasing Emmc image"
+
+
+   ./home/dupdate -platform linuxfb &
+
+   dd if=/root/emmc.img of=/dev/mmcblk0 bs=4M conv=fsync status=progress
+
+   echo "Flasing complete , remove sd card and reboot the system"
+   
+   sleep 10s
+   
+   pkill dupdate
+   ./home/fscreen -platform linuxfb &
+   
+   #reboot
+}
+
+case "$1" in
+  start)
+    start
+  ;;
+  *)
+  ;;
+esac
+

@@ -1,0 +1,2 @@
+
+source "$BR2_EXTERNAL_EVDC2_FINAL_PATH/package/python-mpio/Config.in"
